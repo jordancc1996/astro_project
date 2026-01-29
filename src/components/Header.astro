@@ -1,0 +1,189 @@
+---
+const menuItems = [
+  { label: 'Visa Options', href: '/visa-options' },
+  { label: 'Real Estate', href: '/real-estate' },
+  { label: 'Citizenship', href: '/citizenship' },
+  { label: 'Lifestyle', href: '/lifestyle' },
+  { label: 'About', href: '/about' },
+];
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-luxury">
+  <div class="h-[90px] flex items-center transition-all duration-400 ease-luxury" id="header-inner">
+    <div class="container-luxury w-full">
+      <nav class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="relative z-10">
+          <span id="logo-text" class="font-serif text-xl tracking-wide text-white transition-colors duration-400">
+            Argentina's Golden Visa
+          </span>
+        </a>
+
+        <!-- Desktop Navigation - Centered -->
+        <div class="hidden lg:flex items-center justify-center flex-1 mx-16">
+          <div class="flex items-center gap-10">
+            {menuItems.map((item) => (
+              <a
+                href={item.href}
+                class="nav-link nav-link-hover font-sans text-[11px] font-light tracking-luxury uppercase text-white/90 hover:text-white transition-colors duration-300"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right Side Actions -->
+        <div class="hidden lg:flex items-center gap-8">
+          <!-- Language -->
+          <button id="lang-toggle" class="lang-btn font-sans text-[11px] font-light tracking-widest uppercase text-white/70 hover:text-white transition-colors duration-300">
+            EN
+          </button>
+
+          <!-- Contact Button -->
+          <a
+            href="/contact"
+            id="contact-btn"
+            class="px-6 py-3 font-sans text-[11px] font-light tracking-luxury uppercase border border-white/50 text-white hover:bg-white/10 transition-all duration-300"
+          >
+            Contact
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white transition-colors duration-300">
+          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Menu - Full Screen Overlay -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-40 hidden opacity-0 transition-opacity duration-400">
+    <div class="h-full flex flex-col items-center justify-center">
+      <nav class="text-center space-y-8">
+        {menuItems.map((item) => (
+          <a
+            href={item.href}
+            class="block font-serif text-3xl font-light text-charcoal hover:text-bronze transition-colors duration-300"
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="pt-8">
+          <a
+            href="/contact"
+            class="btn-luxury"
+          >
+            Contact Us
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const headerInner = document.getElementById('header-inner');
+  const logoText = document.getElementById('logo-text');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const langBtn = document.querySelector('.lang-btn');
+  const contactBtn = document.getElementById('contact-btn');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+  let isScrolled = false;
+
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    const shouldBeScrolled = scrollY > 50;
+
+    if (shouldBeScrolled !== isScrolled) {
+      isScrolled = shouldBeScrolled;
+
+      if (isScrolled) {
+        // Scrolled state
+        header?.classList.add('bg-white', 'shadow-soft');
+        headerInner?.classList.remove('h-[90px]');
+        headerInner?.classList.add('h-[70px]');
+        logoText?.classList.remove('text-white');
+        logoText?.classList.add('text-charcoal-light');
+        navLinks.forEach(link => {
+          link.classList.remove('text-white/90', 'hover:text-white');
+          link.classList.add('text-charcoal-light', 'hover:text-bronze');
+        });
+        langBtn?.classList.remove('text-white/70', 'hover:text-white');
+        langBtn?.classList.add('text-gray-light', 'hover:text-charcoal');
+        contactBtn?.classList.remove('border-white/50', 'text-white', 'hover:bg-white/10');
+        contactBtn?.classList.add('border-charcoal-light', 'text-charcoal-light', 'hover:bg-charcoal', 'hover:text-white');
+        mobileMenuBtn?.classList.remove('text-white');
+        mobileMenuBtn?.classList.add('text-charcoal-light');
+      } else {
+        // Top state
+        header?.classList.remove('bg-white', 'shadow-soft');
+        headerInner?.classList.add('h-[90px]');
+        headerInner?.classList.remove('h-[70px]');
+        logoText?.classList.add('text-white');
+        logoText?.classList.remove('text-charcoal-light');
+        navLinks.forEach(link => {
+          link.classList.add('text-white/90', 'hover:text-white');
+          link.classList.remove('text-charcoal-light', 'hover:text-bronze');
+        });
+        langBtn?.classList.add('text-white/70', 'hover:text-white');
+        langBtn?.classList.remove('text-gray-light', 'hover:text-charcoal');
+        contactBtn?.classList.add('border-white/50', 'text-white', 'hover:bg-white/10');
+        contactBtn?.classList.remove('border-charcoal-light', 'text-charcoal-light', 'hover:bg-charcoal', 'hover:text-white');
+        mobileMenuBtn?.classList.add('text-white');
+        mobileMenuBtn?.classList.remove('text-charcoal-light');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader);
+  updateHeader();
+
+  // Mobile menu
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+    
+    if (isOpen) {
+      mobileMenu?.classList.add('opacity-0');
+      setTimeout(() => {
+        mobileMenu?.classList.add('hidden');
+      }, 400);
+    } else {
+      mobileMenu?.classList.remove('hidden');
+      setTimeout(() => {
+        mobileMenu?.classList.remove('opacity-0');
+      }, 10);
+    }
+    
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+  });
+
+  // Language toggle
+  const langToggle = document.getElementById('lang-toggle');
+  let currentLang = 'EN';
+
+  langToggle?.addEventListener('click', () => {
+    currentLang = currentLang === 'EN' ? 'ES' : 'EN';
+    langToggle.textContent = currentLang;
+  });
+</script>
+
+<style>
+  .shadow-soft {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+</style>

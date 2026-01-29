@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const visaTypes = [
+  {
+    id: 'investor',
+    title: 'Inversionista Visa',
+    subtitle: 'Investor Residency',
+    description: 'Obtain Argentine residency through a qualifying business investment. Ideal for entrepreneurs and investors looking to establish presence in South America.',
+    requirements: ['Minimum investment amount', 'Business plan approval', 'Clean criminal record', 'Valid passport'],
+    timeline: '3-6 months',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+    href: '/visa/investor',
+  },
+  {
+    id: 'retiree',
+    title: 'Pensionado Visa',
+    subtitle: 'Retirement Visa',
+    description: 'Designed for retirees with a verifiable monthly pension. Enjoy your retirement years in one of the most beautiful countries in South America.',
+    requirements: ['Proof of pension income', 'Minimum monthly amount', 'Health insurance', 'Valid passport'],
+    timeline: '2-4 months',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    href: '/visa/retiree',
+  },
+  {
+    id: 'rentista',
+    title: 'Rentista Visa',
+    subtitle: 'Passive Income Visa',
+    description: 'For individuals with demonstrable passive income from investments, rental properties, or other stable sources.',
+    requirements: ['Proof of passive income', 'Bank statements', 'Income source documentation', 'Valid passport'],
+    timeline: '2-4 months',
+    image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=800&q=80',
+    href: '/visa/rentista',
+  },
+  {
+    id: 'digital-nomad',
+    title: 'Digital Nomad Visa',
+    subtitle: 'Remote Worker',
+    description: 'Work remotely while enjoying the Argentine lifestyle. Perfect for location-independent professionals and entrepreneurs.',
+    requirements: ['Proof of remote employment', 'Minimum income threshold', 'Health insurance', 'Valid passport'],
+    timeline: '1-2 months',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80',
+    href: '/visa/digital-nomad',
+  },
+];
+---
+
+<BaseLayout title="Visa Options | Argentina's Golden Visa">
+  <Header />
+  <main>
+    <PageHero 
+      title="Visa Options"
+      subtitle="Your Path to Residency"
+      description="Explore the various pathways to Argentine residency. Each visa type offers unique benefits tailored to your situation."
+      image="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1920&q=80"
+      breadcrumbs={[{ label: 'Visa Options', href: '/visa-options' }]}
+    />
+
+    <!-- Visa Types Section -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="space-y-24">
+          {visaTypes.map((visa, index) => (
+            <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <!-- Image -->
+              <div class={`relative h-[400px] overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                <img
+                  src={visa.image}
+                  alt={visa.title}
+                  class="w-full h-full object-cover"
+                  style="filter: saturate(0.9);"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class={index % 2 === 1 ? 'lg:order-1' : ''}>
+                <p class="font-sans text-[11px] font-normal tracking-luxury uppercase text-gray-light mb-4">
+                  {visa.subtitle}
+                </p>
+                <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+                  {visa.title}
+                </h2>
+                <p class="font-sans text-base font-light text-gray-warm leading-relaxed mb-8">
+                  {visa.description}
+                </p>
+
+                <div class="mb-8">
+                  <h3 class="font-sans text-sm font-normal tracking-wide uppercase text-charcoal mb-4">
+                    Key Requirements
+                  </h3>
+                  <ul class="space-y-2">
+                    {visa.requirements.map((req) => (
+                      <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-bronze mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="font-sans text-sm font-light text-gray-warm">{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="flex items-center gap-8 mb-8">
+                  <div>
+                    <p class="font-sans text-[10px] font-normal tracking-luxury uppercase text-gray-light mb-1">Timeline</p>
+                    <p class="font-serif text-xl text-charcoal">{visa.timeline}</p>
+                  </div>
+                </div>
+
+                <a href={visa.href} class="btn-luxury">
+                  Learn More
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">Compare Options</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Visa Comparison
+          </h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[800px]">
+            <thead>
+              <tr class="border-b border-gray-border">
+                <th class="text-left py-4 px-6 font-sans text-sm font-normal text-charcoal">Visa Type</th>
+                <th class="text-left py-4 px-6 font-sans text-sm font-normal text-charcoal">Timeline</th>
+                <th class="text-left py-4 px-6 font-sans text-sm font-normal text-charcoal">Main Requirement</th>
+                <th class="text-left py-4 px-6 font-sans text-sm font-normal text-charcoal">Path to Citizenship</th>
+                <th class="text-left py-4 px-6 font-sans text-sm font-normal text-charcoal">Work Permitted</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-border">
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Inversionista</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">3-6 months</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Business investment</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">2 years</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Yes</td>
+              </tr>
+              <tr class="border-b border-gray-border">
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Pensionado</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">2-4 months</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Pension income</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">2 years</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Limited</td>
+              </tr>
+              <tr class="border-b border-gray-border">
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Rentista</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">2-4 months</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Passive income</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">2 years</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Limited</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Digital Nomad</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">1-2 months</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Remote employment</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Varies</td>
+                <td class="py-4 px-6 font-sans text-sm font-light text-gray-warm">Remote only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-charcoal">
+      <div class="container-luxury text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-light text-white mb-6">
+          Not Sure Which Visa Is Right for You?
+        </h2>
+        <p class="font-sans text-base font-light text-white/70 max-w-xl mx-auto mb-10">
+          Schedule a free consultation with our experts to discuss your situation and find the best pathway to Argentine residency.
+        </p>
+        <a href="/consultation" class="inline-flex items-center justify-center px-10 py-4 font-sans text-sm font-normal tracking-widest uppercase bg-white text-charcoal hover:bg-gray-100 transition-colors">
+          Book Free Consultation
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

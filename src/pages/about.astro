@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const team = [
+  {
+    name: 'María González',
+    role: 'Founder & CEO',
+    bio: 'Former immigration attorney with 15 years of experience helping expats relocate to Argentina.',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80',
+  },
+  {
+    name: 'Carlos Mendez',
+    role: 'Head of Immigration Services',
+    bio: 'Expert in Argentine immigration law, specializing in investor and retirement visas.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
+  },
+  {
+    name: 'Sofia Ruiz',
+    role: 'Client Relations Director',
+    bio: 'Dedicated to ensuring every client receives personalized attention throughout their journey.',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80',
+  },
+];
+
+const values = [
+  {
+    title: 'Integrity',
+    description: 'We operate with complete transparency, providing honest guidance even when it means advising against a particular path.',
+  },
+  {
+    title: 'Excellence',
+    description: 'Every case receives our full attention and expertise, ensuring the highest probability of success.',
+  },
+  {
+    title: 'Empathy',
+    description: 'We understand the emotional journey of relocation and provide compassionate support every step of the way.',
+  },
+  {
+    title: 'Results',
+    description: 'Our 98% approval rate speaks to our commitment to achieving positive outcomes for our clients.',
+  },
+];
+---
+
+<BaseLayout title="About Us | Argentina's Golden Visa">
+  <Header />
+  <main>
+    <PageHero 
+      title="About Us"
+      subtitle="Our Story"
+      description="Helping dreams of Argentine residency become reality since 2015."
+      image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80"
+      breadcrumbs={[{ label: 'About', href: '/about' }]}
+    />
+
+    <!-- Mission Section -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="label-small mb-4">Our Mission</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+              Making Argentina Accessible to the World
+            </h2>
+            <p class="font-sans text-base font-light text-gray-warm leading-relaxed mb-6">
+              Argentina's Golden Visa was founded with a simple mission: to help individuals and families from around the world experience the incredible quality of life that Argentina offers.
+            </p>
+            <p class="font-sans text-base font-light text-gray-warm leading-relaxed mb-6">
+              We believe that everyone deserves the opportunity to explore new horizons, and we've made it our purpose to simplify the complex world of immigration law, making residency and citizenship accessible to those who dream of calling Argentina home.
+            </p>
+            <p class="font-sans text-base font-light text-gray-warm leading-relaxed">
+              From the vibrant streets of Buenos Aires to the serene vineyards of Mendoza, we help our clients find their place in this remarkable country.
+            </p>
+          </div>
+          <div class="relative h-[500px]">
+            <img
+              src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&q=80"
+              alt="Buenos Aires skyline"
+              class="w-full h-full object-cover"
+              style="filter: saturate(0.9);"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">What We Stand For</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Our Values
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((value) => (
+            <div class="text-center">
+              <h3 class="font-serif text-xl text-charcoal mb-4">{value.title}</h3>
+              <p class="font-sans text-sm font-light text-gray-warm leading-relaxed">
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">The People Behind Our Success</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Meet Our Team
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {team.map((member) => (
+            <div class="text-center">
+              <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-serif text-xl text-charcoal mb-1">{member.name}</h3>
+              <p class="font-sans text-sm font-light text-bronze mb-4">{member.role}</p>
+              <p class="font-sans text-sm font-light text-gray-warm leading-relaxed">
+                {member.bio}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-padding bg-charcoal">
+      <div class="container-luxury">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p class="font-serif text-4xl md:text-5xl text-white mb-2">500+</p>
+            <p class="font-sans text-sm font-light text-white/60 tracking-wide uppercase">Clients Served</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl md:text-5xl text-white mb-2">98%</p>
+            <p class="font-sans text-sm font-light text-white/60 tracking-wide uppercase">Approval Rate</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl md:text-5xl text-white mb-2">10+</p>
+            <p class="font-sans text-sm font-light text-white/60 tracking-wide uppercase">Years Experience</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl md:text-5xl text-white mb-2">3</p>
+            <p class="font-sans text-sm font-light text-white/60 tracking-wide uppercase">Global Offices</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+          Ready to Start Your Journey?
+        </h2>
+        <p class="font-sans text-base font-light text-gray-warm max-w-xl mx-auto mb-10">
+          Let us guide you through the process of making Argentina your new home.
+        </p>
+        <a href="/consultation" class="btn-luxury">
+          Book a Consultation
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

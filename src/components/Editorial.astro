@@ -1,0 +1,255 @@
+---
+const featuredArticle = {
+  title: 'Tax Advantages for Expats in Argentina',
+  excerpt: 'Discover why Argentina is becoming a premier destination for international tax planning, with favorable policies for foreign residents.',
+  image: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80',
+  category: 'Finance',
+  readTime: '8 min',
+  href: '/guides/tax-advantages',
+};
+
+const articles = [
+  {
+    title: 'Healthcare Guide for Expats',
+    category: 'Healthcare',
+    readTime: '6 min',
+    href: '/guides/healthcare',
+  },
+  {
+    title: 'Opening a Bank Account',
+    category: 'Banking',
+    readTime: '5 min',
+    href: '/guides/banking',
+  },
+  {
+    title: 'Argentine Culture & Etiquette',
+    category: 'Culture',
+    readTime: '7 min',
+    href: '/guides/culture',
+  },
+];
+---
+
+<section class="section-padding bg-cream-light">
+  <div class="container-luxury">
+    <!-- Section Header -->
+    <div class="text-center mb-20 md:mb-28 reveal">
+      <p class="label-small mb-5">
+        Resources & Insights
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-light text-charcoal tracking-wide mb-6">
+        The Argentina Living Guide
+      </h2>
+      <div class="divider-light"></div>
+    </div>
+
+    <!-- Editorial Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 stagger-children">
+      <!-- Featured Article -->
+      <div class="lg:col-span-7">
+        <a href={featuredArticle.href} class="group block">
+          <div class="featured-card">
+            <!-- Image - z-index: 0 -->
+            <img
+              src={featuredArticle.image}
+              alt={featuredArticle.title}
+              class="featured-image"
+            />
+
+            <!-- Dark Gradient Overlay - z-index: 1 -->
+            <div class="featured-overlay"></div>
+
+            <!-- Content - z-index: 2 -->
+            <div class="featured-content">
+              <div class="featured-meta">
+                <span class="featured-category">
+                  {featuredArticle.category}
+                </span>
+                <span class="featured-dot"></span>
+                <span class="featured-time">
+                  {featuredArticle.readTime}
+                </span>
+              </div>
+
+              <h3 class="featured-title">
+                {featuredArticle.title}
+              </h3>
+
+              <p class="featured-excerpt">
+                {featuredArticle.excerpt}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Article List -->
+      <div class="lg:col-span-5 flex flex-col justify-center">
+        <div class="space-y-0">
+          {articles.map((article, index) => (
+            <a href={article.href} class="group block py-8 border-b border-gray-border last:border-b-0">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="font-sans text-[10px] font-light tracking-luxury uppercase text-gray-light">
+                  {article.category}
+                </span>
+                <span class="w-1 h-1 bg-gray-border rounded-full"></span>
+                <span class="font-sans text-[10px] font-light text-gray-light">
+                  {article.readTime}
+                </span>
+              </div>
+
+              <h4 class="font-serif text-xl md:text-2xl text-charcoal font-light tracking-wide group-hover:text-bronze transition-colors duration-300">
+                {article.title}
+              </h4>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-10">
+          <a href="/guides" class="link-underline font-sans text-sm font-light tracking-widest uppercase text-charcoal-light">
+            View All Guides
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Featured Card Container */
+  .featured-card {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .featured-card {
+      height: 550px;
+    }
+  }
+
+  /* Background Image - z-index: 0 */
+  .featured-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: saturate(0.9);
+    transition: transform 0.7s ease-out;
+  }
+
+  .group:hover .featured-image {
+    transform: scale(1.03);
+  }
+
+  /* Dark Gradient Overlay - z-index: 1 */
+  .featured-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.35) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    transition: background 0.5s ease;
+  }
+
+  .group:hover .featured-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+  }
+
+  /* Content Container - z-index: 2 */
+  .featured-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+  }
+
+  @media (min-width: 768px) {
+    .featured-content {
+      padding: 48px;
+    }
+  }
+
+  /* Meta Info Row */
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .featured-category {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.85;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .featured-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .featured-time {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Featured Title */
+  .featured-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .featured-title {
+      font-size: 36px;
+    }
+  }
+
+  .group:hover .featured-title {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Featured Excerpt */
+  .featured-excerpt {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 450px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  }
+</style>

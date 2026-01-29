@@ -1,0 +1,111 @@
+---
+const properties = [
+  {
+    id: 1,
+    title: 'Palermo Soho Penthouse',
+    location: 'Buenos Aires',
+    price: 485000,
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    beds: 3,
+    baths: 2,
+    sqm: 180,
+  },
+  {
+    id: 2,
+    title: 'Vineyard Estate',
+    location: 'Mendoza',
+    price: 1250000,
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+    beds: 5,
+    baths: 4,
+    sqm: 450,
+  },
+  {
+    id: 3,
+    title: 'Lakefront Villa',
+    location: 'Bariloche',
+    price: 890000,
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    beds: 4,
+    baths: 3,
+    sqm: 320,
+  },
+];
+
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+---
+
+<section class="section-padding bg-white">
+  <div class="container-luxury">
+    <!-- Section Header -->
+    <div class="text-center mb-20 md:mb-28 reveal">
+      <p class="label-small mb-5">
+        Investment Opportunities
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-light text-charcoal tracking-wide mb-6">
+        Eligible Properties
+      </h2>
+      <div class="divider-light mb-8"></div>
+      <p class="font-sans text-base font-light text-gray-warm leading-relaxed max-w-xl mx-auto">
+        Curated selection of premium properties that qualify for Argentina's 
+        investor residency program.
+      </p>
+    </div>
+
+    <!-- Properties Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 stagger-children">
+      {properties.map((property) => (
+        <a href={`/property/${property.id}`} class="group block">
+          <div class="card-luxury overflow-hidden">
+            <!-- Image -->
+            <div class="relative h-72 md:h-80 overflow-hidden">
+              <img
+                src={property.image}
+                alt={property.title}
+                class="w-full h-full object-cover image-editorial image-zoom"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="p-8">
+              <!-- Location -->
+              <p class="font-sans text-[10px] font-light tracking-luxury uppercase text-gray-light mb-3">
+                {property.location}
+              </p>
+
+              <!-- Title -->
+              <h3 class="font-serif text-xl text-charcoal mb-4 group-hover:text-bronze transition-colors duration-300">
+                {property.title}
+              </h3>
+
+              <!-- Price -->
+              <p class="font-serif text-2xl text-charcoal font-light mb-6">
+                {formatPrice(property.price)}
+              </p>
+
+              <!-- Specs -->
+              <div class="flex items-center gap-6 pt-6 border-t border-gray-border">
+                <span class="font-sans text-sm font-light text-gray-light">{property.beds} Beds</span>
+                <span class="font-sans text-sm font-light text-gray-light">{property.baths} Baths</span>
+                <span class="font-sans text-sm font-light text-gray-light">{property.sqm} m²</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- View All -->
+    <div class="text-center mt-16 md:mt-24 reveal">
+      <a href="/real-estate" class="btn-luxury">
+        View All Properties
+      </a>
+    </div>
+  </div>
+</section>

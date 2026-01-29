@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const regions = [
+  {
+    name: 'Buenos Aires',
+    tagline: 'The Paris of the South',
+    description: 'A cosmopolitan capital with world-class dining, vibrant nightlife, stunning architecture, and a rich cultural scene.',
+    image: 'https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=800&q=80',
+  },
+  {
+    name: 'Mendoza',
+    tagline: 'Wine Country',
+    description: 'Nestled at the foot of the Andes, home to world-renowned Malbec wines and stunning mountain landscapes.',
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80',
+  },
+  {
+    name: 'Bariloche',
+    tagline: 'The Argentine Alps',
+    description: 'Breathtaking Patagonian beauty with crystal-clear lakes, snow-capped peaks, and Swiss-style chocolate shops.',
+    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80',
+  },
+  {
+    name: 'Córdoba',
+    tagline: 'The Heartland',
+    description: 'Argentina\'s second city offers colonial history, beautiful sierras, and a thriving university culture.',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+  },
+];
+
+const topics = [
+  {
+    title: 'Healthcare',
+    description: 'Argentina boasts an excellent healthcare system with both public and private options. Private healthcare is affordable and world-class.',
+    icon: '🏥',
+  },
+  {
+    title: 'Cost of Living',
+    description: 'Enjoy a high quality of life at a fraction of US or European costs. Buenos Aires offers exceptional value for expats.',
+    icon: '💰',
+  },
+  {
+    title: 'Culture & Arts',
+    description: 'From tango to world-class museums, Argentina offers a rich cultural tapestry with European influences and Latin passion.',
+    icon: '🎭',
+  },
+  {
+    title: 'Cuisine',
+    description: 'Famous for its beef, wine, and Italian-influenced cuisine. Buenos Aires has one of the world\'s best food scenes.',
+    icon: '🍷',
+  },
+  {
+    title: 'Education',
+    description: 'Free public university education, including for foreigners. Excellent bilingual private schools available.',
+    icon: '🎓',
+  },
+  {
+    title: 'Climate',
+    description: 'Four distinct seasons (reversed from Northern Hemisphere). Choose from tropical north to sub-Antarctic south.',
+    icon: '☀️',
+  },
+];
+---
+
+<BaseLayout title="Lifestyle | Argentina's Golden Visa">
+  <Header />
+  <main>
+    <PageHero 
+      title="Life in Argentina"
+      subtitle="Discover Your New Home"
+      description="Experience the incredible quality of life that draws expats from around the world to Argentina."
+      image="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1920&q=80"
+      breadcrumbs={[{ label: 'Lifestyle', href: '/lifestyle' }]}
+    />
+
+    <!-- Introduction -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="label-small mb-4">Why Argentina?</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+            A Land of Extraordinary Beauty and Culture
+          </h2>
+          <p class="font-sans text-base font-light text-gray-warm leading-relaxed">
+            Argentina offers an unparalleled quality of life that combines European sophistication with Latin American warmth. From the cosmopolitan streets of Buenos Aires to the serene vineyards of Mendoza, discover a country that captivates visitors and welcomes them as family.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Regions -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">Explore Argentina</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Top Regions for Expats
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {regions.map((region, index) => (
+            <div class="group relative h-[400px] overflow-hidden">
+              <img
+                src={region.image}
+                alt={region.name}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style="filter: saturate(0.9);"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                <p class="font-sans text-[10px] font-normal tracking-luxury uppercase text-white/70 mb-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                  {region.tagline}
+                </p>
+                <h3 class="font-serif text-3xl text-white mb-3" style="text-shadow: 0 2px 12px rgba(0,0,0,0.6);">
+                  {region.name}
+                </h3>
+                <p class="font-sans text-sm font-light text-white/80 leading-relaxed max-w-md" style="text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
+                  {region.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Living Topics -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">Expat Essentials</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            What to Expect
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {topics.map((topic) => (
+            <div class="p-8 border border-gray-border hover:shadow-card transition-shadow duration-300">
+              <span class="text-4xl mb-4 block">{topic.icon}</span>
+              <h3 class="font-serif text-xl text-charcoal mb-3">{topic.title}</h3>
+              <p class="font-sans text-sm font-light text-gray-warm leading-relaxed">
+                {topic.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cost Comparison -->
+    <section class="section-padding bg-charcoal">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="font-sans text-[11px] font-normal tracking-luxury uppercase text-white/50 mb-4">Cost of Living</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-white">
+            Your Money Goes Further
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p class="font-serif text-4xl text-white mb-2">60%</p>
+            <p class="font-sans text-sm font-light text-white/60">Less than NYC</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl text-white mb-2">$1,500</p>
+            <p class="font-sans text-sm font-light text-white/60">Monthly Budget</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl text-white mb-2">$5</p>
+            <p class="font-sans text-sm font-light text-white/60">Quality Dinner</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl text-white mb-2">$800</p>
+            <p class="font-sans text-sm font-light text-white/60">Apartment Rent</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+          Ready to Experience Argentina?
+        </h2>
+        <p class="font-sans text-base font-light text-gray-warm max-w-xl mx-auto mb-10">
+          Let us help you make the move to this incredible country.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/consultation" class="btn-luxury">
+            Book a Consultation
+          </a>
+          <a href="/guides" class="font-sans text-sm font-light tracking-widest uppercase text-charcoal hover:text-bronze transition-colors">
+            Read Our Guides →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Obtain Residency',
+    description: 'First, secure your temporary or permanent residency through one of our visa programs.',
+  },
+  {
+    number: '02',
+    title: 'Maintain Residence',
+    description: 'Live in Argentina for a minimum of 2 years, maintaining your legal residency status.',
+  },
+  {
+    number: '03',
+    title: 'Prepare Documentation',
+    description: 'Gather required documents including proof of residence, income, and clean criminal record.',
+  },
+  {
+    number: '04',
+    title: 'Submit Application',
+    description: 'File your citizenship application with the federal court in your jurisdiction.',
+  },
+  {
+    number: '05',
+    title: 'Attend Interview',
+    description: 'Complete an interview demonstrating basic Spanish proficiency and knowledge of Argentina.',
+  },
+  {
+    number: '06',
+    title: 'Receive Citizenship',
+    description: 'Upon approval, take the oath of allegiance and receive your Argentine citizenship.',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Visa-Free Travel',
+    description: 'Access to 170+ countries without visa requirements, including the entire Schengen Area.',
+  },
+  {
+    title: 'Dual Citizenship',
+    description: 'Argentina allows dual citizenship, so you can maintain your original nationality.',
+  },
+  {
+    title: 'Full Rights',
+    description: 'Vote, work, own property, and access all benefits available to Argentine citizens.',
+  },
+  {
+    title: 'Pass to Children',
+    description: 'Your children and future generations automatically qualify for citizenship.',
+  },
+  {
+    title: 'Business Opportunities',
+    description: 'Full access to start, own, and operate businesses throughout Argentina.',
+  },
+  {
+    title: 'Healthcare & Education',
+    description: 'Access to Argentina\'s excellent public healthcare and university systems.',
+  },
+];
+---
+
+<BaseLayout title="Citizenship | Argentina's Golden Visa">
+  <Header />
+  <main>
+    <PageHero 
+      title="Path to Citizenship"
+      subtitle="Become an Argentine Citizen"
+      description="After just 2 years of residency, you can become a full citizen of Argentina with all associated rights and privileges."
+      image="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1920&q=80"
+      breadcrumbs={[{ label: 'Citizenship', href: '/citizenship' }]}
+    />
+
+    <!-- Overview Section -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="label-small mb-4">Why Argentine Citizenship?</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+              One of the World's Most Valuable Passports
+            </h2>
+            <p class="font-sans text-base font-light text-gray-warm leading-relaxed mb-6">
+              Argentine citizenship offers remarkable benefits, including one of the most powerful passports in Latin America with visa-free access to over 170 countries including the entire European Union.
+            </p>
+            <p class="font-sans text-base font-light text-gray-warm leading-relaxed mb-6">
+              Unlike many countries that require 5-10 years of residency, Argentina offers a fast track to citizenship in just 2 years. Combined with the country's allowance of dual citizenship, it's an attractive option for global citizens.
+            </p>
+            <div class="flex gap-8">
+              <div>
+                <p class="font-serif text-4xl text-charcoal mb-1">2</p>
+                <p class="font-sans text-sm font-light text-gray-light">Years to Citizenship</p>
+              </div>
+              <div>
+                <p class="font-serif text-4xl text-charcoal mb-1">170+</p>
+                <p class="font-sans text-sm font-light text-gray-light">Visa-Free Countries</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative h-[500px]">
+            <img
+              src="https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=800&q=80"
+              alt="Argentine citizenship"
+              class="w-full h-full object-cover"
+              style="filter: saturate(0.9);"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">The Process</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Your Path to Citizenship
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {steps.map((step) => (
+            <div class="bg-white p-8 border border-gray-border">
+              <p class="font-serif text-4xl text-bronze/30 mb-4">{step.number}</p>
+              <h3 class="font-serif text-xl text-charcoal mb-3">{step.title}</h3>
+              <p class="font-sans text-sm font-light text-gray-warm leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="text-center mb-16">
+          <p class="label-small mb-4">Benefits</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal">
+            Why Become an Argentine Citizen
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit) => (
+            <div class="text-center p-8">
+              <h3 class="font-serif text-xl text-charcoal mb-3">{benefit.title}</h3>
+              <p class="font-sans text-sm font-light text-gray-warm leading-relaxed">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="section-padding bg-charcoal">
+      <div class="container-luxury">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <p class="font-sans text-[11px] font-normal tracking-luxury uppercase text-white/50 mb-4">Requirements</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-light text-white mb-8">
+              What You'll Need
+            </h2>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Minimum 2 years of legal residency in Argentina</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Valid DNI (national identity document)</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Proof of means of support (employment, business, etc.)</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Clean criminal record (both countries)</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Basic Spanish language proficiency</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <svg class="w-5 h-5 text-bronze mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-sans text-base font-light text-white/80">Knowledge of Argentine history and constitution</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-sans text-[11px] font-normal tracking-luxury uppercase text-white/50 mb-4">Timeline</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-light text-white mb-8">
+              Expected Duration
+            </h2>
+            <div class="space-y-6">
+              <div class="border-l-2 border-bronze pl-6">
+                <p class="font-serif text-xl text-white mb-1">Residency Period</p>
+                <p class="font-sans text-sm font-light text-white/60">2 years minimum</p>
+              </div>
+              <div class="border-l-2 border-white/20 pl-6">
+                <p class="font-serif text-xl text-white mb-1">Application Processing</p>
+                <p class="font-sans text-sm font-light text-white/60">6-12 months</p>
+              </div>
+              <div class="border-l-2 border-white/20 pl-6">
+                <p class="font-serif text-xl text-white mb-1">Total Timeline</p>
+                <p class="font-sans text-sm font-light text-white/60">2.5 - 3 years from start</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-cream-light">
+      <div class="container-luxury text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-6">
+          Start Your Citizenship Journey
+        </h2>
+        <p class="font-sans text-base font-light text-gray-warm max-w-xl mx-auto mb-10">
+          Let our experts guide you through every step of the process, from initial residency to full citizenship.
+        </p>
+        <a href="/consultation" class="btn-luxury">
+          Book a Consultation
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

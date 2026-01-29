@@ -1,0 +1,139 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    name: 'Michael Richardson',
+    role: 'Tech Entrepreneur',
+    location: 'San Francisco',
+    quote: "The team made our relocation seamless. Within 6 months, my family had our residency and we're now enjoying life in Palermo.",
+  },
+  {
+    id: 2,
+    name: 'Sophie Laurent',
+    role: 'Retired Executive',
+    location: 'Paris',
+    quote: 'After 30 years in corporate banking, I wanted somewhere beautiful and affordable to retire. Mendoza exceeded all expectations.',
+  },
+  {
+    id: 3,
+    name: 'David Chen',
+    role: 'Real Estate Investor',
+    location: 'Hong Kong',
+    quote: 'The investment opportunities here are incredible. The team helped me navigate the property market and obtain my investor visa.',
+  },
+];
+---
+
+<section class="section-padding bg-charcoal">
+  <div class="container-luxury">
+    <!-- Section Header -->
+    <div class="text-center mb-20 md:mb-28 reveal">
+      <p class="font-sans text-[11px] font-light tracking-luxury uppercase text-white/40 mb-5">
+        Client Stories
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl font-light text-white tracking-wide">
+        What Our Clients Say
+      </h2>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="max-w-3xl mx-auto">
+      <div id="testimonials-container" class="relative">
+        {testimonials.map((testimonial, index) => (
+          <div 
+            class={`testimonial-slide text-center transition-opacity duration-500 ${index === 0 ? 'block' : 'hidden'}`}
+            data-index={index}
+          >
+            <!-- Quote -->
+            <blockquote class="font-serif text-2xl md:text-3xl text-white/90 font-light leading-relaxed tracking-wide mb-12">
+              "{testimonial.quote}"
+            </blockquote>
+
+            <!-- Author -->
+            <div>
+              <p class="font-serif text-xl text-white font-light mb-1">
+                {testimonial.name}
+              </p>
+              <p class="font-sans text-sm text-white/50 font-light">
+                {testimonial.role}, {testimonial.location}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex items-center justify-center gap-4 mt-16">
+        <button id="testimonial-prev" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-all duration-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="flex items-center gap-3">
+          {testimonials.map((_, index) => (
+            <button
+              class={`testimonial-dot w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-8 bg-white' : 'bg-white/20'}`}
+              data-index={index}
+            ></button>
+          ))}
+        </div>
+
+        <button id="testimonial-next" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-all duration-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.testimonial-dot');
+  const prevBtn = document.getElementById('testimonial-prev');
+  const nextBtn = document.getElementById('testimonial-next');
+  
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+
+  function showSlide(index: number) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('hidden', i !== index);
+      slide.classList.toggle('block', i === index);
+    });
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('w-8', i === index);
+      dot.classList.toggle('bg-white', i === index);
+      dot.classList.toggle('w-2', i !== index);
+      dot.classList.toggle('bg-white/20', i !== index);
+    });
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  });
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index') || '0');
+      currentSlide = index;
+      showSlide(currentSlide);
+    });
+  });
+
+  // Auto-advance
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }, 6000);
+</script>

@@ -1,0 +1,522 @@
+@import "tailwindcss";
+
+/* ============================================
+   ONE&ONLY INSPIRED LUXURY DESIGN SYSTEM
+   Ultra-minimalist, photography-first design
+   ============================================ */
+
+/* CSS Custom Properties */
+:root {
+  /* Primary Colors */
+  --white: #FFFFFF;
+  --cream-light: #FAF9F6;
+  --cream: #F7F6F3;
+  
+  /* Text Colors */
+  --charcoal: #1A1A1A;
+  --charcoal-light: #2C2C2C;
+  --gray-warm: #6B6B6B;
+  --gray-light: #8C8C8C;
+  
+  /* UI Colors */
+  --border-light: #E5E5E5;
+  --border-lighter: #F0F0F0;
+  
+  /* Accent (use sparingly <5%) */
+  --bronze: #A0826D;
+  --bronze-dark: #8B7355;
+  
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', 'Inter', system-ui, sans-serif;
+  
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: var(--charcoal);
+  background: var(--white);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--charcoal);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray-warm);
+}
+
+/* Selection */
+::selection {
+  background: rgba(160, 130, 109, 0.15);
+  color: var(--charcoal);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--border-lighter);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C0C0C0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-light);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Font Classes */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Container */
+.container-luxury {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-luxury {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-luxury {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-luxury {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* Section Spacing */
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+}
+
+/* Letter Spacing */
+.tracking-luxury {
+  letter-spacing: 0.12em;
+}
+
+.tracking-wide-luxury {
+  letter-spacing: 0.15em;
+}
+
+/* Small Labels */
+.label-small {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--charcoal);
+  background: transparent;
+  color: var(--charcoal);
+  transition: all 0.3s var(--ease-luxury);
+  cursor: pointer;
+}
+
+.btn-luxury:hover {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.btn-luxury-light {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--white);
+  background: transparent;
+}
+
+.btn-luxury-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--white);
+}
+
+/* ============================================
+   HERO OVERLAY
+   ============================================ */
+
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* ============================================
+   DIVIDERS
+   ============================================ */
+
+.divider-light {
+  height: 1px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--border-light);
+}
+
+/* ============================================
+   IMAGE TREATMENTS
+   ============================================ */
+
+.image-editorial {
+  filter: saturate(0.9);
+  transition: all 0.6s var(--ease-luxury);
+}
+
+.image-editorial:hover {
+  filter: saturate(0.95);
+}
+
+.image-zoom {
+  transition: transform 0.6s var(--ease-luxury);
+}
+
+.group:hover .image-zoom {
+  transform: scale(1.03);
+}
+
+/* Vignette Effect */
+.image-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  pointer-events: none;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card-luxury {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s var(--ease-luxury);
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   HORIZONTAL SCROLL
+   ============================================ */
+
+.horizontal-scroll {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 0;
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .horizontal-scroll {
+    gap: 40px;
+    margin: 0 -2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .horizontal-scroll {
+    margin: 0 -3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: var(--border-lighter);
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #C0C0C0;
+  border-radius: 3px;
+}
+
+.scroll-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 1s var(--ease-smooth) forwards;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s var(--ease-luxury) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s var(--ease-luxury) forwards;
+}
+
+.animate-bounce-gentle {
+  animation: gentleBounce 2s ease-in-out infinite;
+}
+
+/* Stagger Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* Scroll-triggered animations (initial state) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s var(--ease-smooth);
+}
+
+.reveal-fade.revealed {
+  opacity: 1;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-luxury), transform 0.6s var(--ease-luxury);
+}
+
+.stagger-children.revealed > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+.stagger-children.revealed > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   LINK STYLES
+   ============================================ */
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--bronze);
+  transition: width 0.3s var(--ease-luxury);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   NAV LINK HOVER
+   ============================================ */
+
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--bronze);
+  transition: width 0.3s var(--ease-luxury);
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   TEXT BALANCE
+   ============================================ */
+
+.text-balance {
+  text-wrap: balance;
+}

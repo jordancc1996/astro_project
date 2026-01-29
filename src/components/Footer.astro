@@ -1,0 +1,274 @@
+---
+const footerColumns = [
+  {
+    title: 'Visa Types',
+    links: [
+      { label: 'Inversionista Visa', href: '/visa/investor' },
+      { label: 'Pensionado Visa', href: '/visa/retiree' },
+      { label: 'Rentista Visa', href: '/visa/rentista' },
+      { label: 'Citizenship', href: '/citizenship' },
+    ],
+  },
+  {
+    title: 'Real Estate',
+    links: [
+      { label: 'Buenos Aires', href: '/real-estate/buenos-aires' },
+      { label: 'Mendoza', href: '/real-estate/mendoza' },
+      { label: 'Bariloche', href: '/real-estate/bariloche' },
+      { label: 'All Properties', href: '/real-estate' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Living Guide', href: '/guides' },
+      { label: 'Tax Benefits', href: '/guides/tax' },
+      { label: 'Healthcare', href: '/guides/healthcare' },
+      { label: 'FAQs', href: '/faq' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Newsletter', href: '/newsletter' },
+    ],
+  },
+];
+
+const offices = [
+  { city: 'Buenos Aires', address: 'Av. Libertador 4000, Palermo' },
+  { city: 'Miami', address: '200 S Biscayne Blvd, Suite 1800' },
+  { city: 'New York', address: '350 Fifth Avenue, 21st Floor' },
+];
+---
+
+<footer class="footer-wrapper">
+  <div class="container-luxury">
+    <!-- Main Footer Content -->
+    <div class="footer-grid">
+      <!-- Left Section: Brand & Offices -->
+      <div class="footer-brand">
+        <!-- Logo -->
+        <a href="/" class="footer-logo">
+          Argentina's Golden Visa
+        </a>
+
+        <!-- Description -->
+        <p class="footer-description">
+          Your trusted partner in obtaining Argentine residency and citizenship. 
+          Expert guidance from consultation to completion, helping you navigate 
+          every step of your journey to South America.
+        </p>
+
+        <!-- Offices -->
+        <div class="footer-offices">
+          {offices.map((office) => (
+            <div class="footer-office">
+              <h4 class="footer-office-city">{office.city}</h4>
+              <p class="footer-office-address">{office.address}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Section: Navigation Columns -->
+      <div class="footer-nav">
+        {footerColumns.map((column) => (
+          <div class="footer-column">
+            <h3 class="footer-column-title">{column.title}</h3>
+            <ul class="footer-column-links">
+              {column.links.map((link) => (
+                <li>
+                  <a href={link.href} class="footer-link">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container-luxury">
+      <div class="footer-bottom-content">
+        <p class="footer-copyright">
+          © 2026 Argentina's Golden Visa. All rights reserved.
+        </p>
+        <div class="footer-legal">
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
+          <a href="/terms" class="footer-legal-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Footer Wrapper */
+  .footer-wrapper {
+    background-color: #FAF9F6;
+  }
+
+  /* Main Footer Grid */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 80px 0 60px;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+  }
+
+  /* Brand Section */
+  .footer-brand {
+    max-width: 400px;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #2C2C2C;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .footer-description {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #6B6B6B;
+    margin-bottom: 40px;
+  }
+
+  /* Offices */
+  .footer-offices {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-office-city {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2C2C2C;
+    margin-bottom: 4px;
+  }
+
+  .footer-office-address {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #8C8C8C;
+  }
+
+  /* Navigation Columns */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-nav {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+  }
+
+  .footer-column {
+    /* Each column */
+  }
+
+  .footer-column-title {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6B6B6B;
+    margin-bottom: 24px;
+  }
+
+  .footer-column-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-link {
+    display: block;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #8C8C8C;
+    text-decoration: none;
+    line-height: 2;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #2C2C2C;
+  }
+
+  /* Bottom Bar */
+  .footer-bottom {
+    border-top: 1px solid #E5E5E5;
+    padding: 24px 0;
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom-content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-copyright {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #8C8C8C;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-legal-link {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #8C8C8C;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-legal-link:hover {
+    color: #2C2C2C;
+  }
+</style>

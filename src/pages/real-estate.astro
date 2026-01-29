@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const properties = [
+  {
+    id: 1,
+    title: 'Palermo Soho Penthouse',
+    location: 'Buenos Aires',
+    price: 485000,
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    beds: 3,
+    baths: 2,
+    sqm: 180,
+    eligible: true,
+  },
+  {
+    id: 2,
+    title: 'Vineyard Estate',
+    location: 'Mendoza',
+    price: 1250000,
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+    beds: 5,
+    baths: 4,
+    sqm: 450,
+    eligible: true,
+  },
+  {
+    id: 3,
+    title: 'Lakefront Villa',
+    location: 'Bariloche',
+    price: 890000,
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    beds: 4,
+    baths: 3,
+    sqm: 320,
+    eligible: true,
+  },
+  {
+    id: 4,
+    title: 'Recoleta Classic Apartment',
+    location: 'Buenos Aires',
+    price: 620000,
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    beds: 4,
+    baths: 3,
+    sqm: 220,
+    eligible: true,
+  },
+  {
+    id: 5,
+    title: 'Mountain Retreat',
+    location: 'Córdoba',
+    price: 380000,
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
+    beds: 3,
+    baths: 2,
+    sqm: 200,
+    eligible: true,
+  },
+  {
+    id: 6,
+    title: 'Puerto Madero Loft',
+    location: 'Buenos Aires',
+    price: 550000,
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+    beds: 2,
+    baths: 2,
+    sqm: 150,
+    eligible: true,
+  },
+];
+
+const locations = [
+  { name: 'Buenos Aires', count: 45 },
+  { name: 'Mendoza', count: 18 },
+  { name: 'Bariloche', count: 12 },
+  { name: 'Córdoba', count: 15 },
+  { name: 'Salta', count: 8 },
+];
+
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+---
+
+<BaseLayout title="Real Estate | Argentina's Golden Visa">
+  <Header />
+  <main>
+    <PageHero 
+      title="Investment Properties"
+      subtitle="Real Estate Opportunities"
+      description="Discover premium properties that qualify for Argentina's investor residency program."
+      image="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80"
+      breadcrumbs={[{ label: 'Real Estate', href: '/real-estate' }]}
+    />
+
+    <!-- Filters & Listings -->
+    <section class="section-padding bg-white">
+      <div class="container-luxury">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+          <!-- Sidebar Filters -->
+          <aside class="lg:col-span-1">
+            <div class="sticky top-32">
+              <h3 class="font-serif text-xl text-charcoal mb-6">Filter Properties</h3>
+              
+              <!-- Location Filter -->
+              <div class="mb-8">
+                <h4 class="font-sans text-sm font-normal text-charcoal mb-4">Location</h4>
+                <div class="space-y-3">
+                  {locations.map((loc) => (
+                    <label class="flex items-center justify-between cursor-pointer group">
+                      <div class="flex items-center gap-3">
+                        <input type="checkbox" class="w-4 h-4 border-gray-border" />
+                        <span class="font-sans text-sm font-light text-gray-warm group-hover:text-charcoal transition-colors">{loc.name}</span>
+                      </div>
+                      <span class="font-sans text-xs text-gray-light">{loc.count}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Price Filter -->
+              <div class="mb-8">
+                <h4 class="font-sans text-sm font-normal text-charcoal mb-4">Price Range</h4>
+                <div class="space-y-3">
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" class="w-4 h-4 border-gray-border" />
+                    <span class="font-sans text-sm font-light text-gray-warm group-hover:text-charcoal transition-colors">Under $500,000</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" class="w-4 h-4 border-gray-border" />
+                    <span class="font-sans text-sm font-light text-gray-warm group-hover:text-charcoal transition-colors">$500,000 - $1,000,000</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" class="w-4 h-4 border-gray-border" />
+                    <span class="font-sans text-sm font-light text-gray-warm group-hover:text-charcoal transition-colors">Over $1,000,000</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Bedrooms Filter -->
+              <div class="mb-8">
+                <h4 class="font-sans text-sm font-normal text-charcoal mb-4">Bedrooms</h4>
+                <div class="flex gap-2">
+                  {[1, 2, 3, 4, '5+'].map((num) => (
+                    <button class="w-10 h-10 border border-gray-border font-sans text-sm font-light text-gray-warm hover:border-charcoal hover:text-charcoal transition-colors">
+                      {num}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <button class="w-full py-3 border border-charcoal font-sans text-sm font-light tracking-widest uppercase text-charcoal hover:bg-charcoal hover:text-white transition-colors">
+                Apply Filters
+              </button>
+            </div>
+          </aside>
+
+          <!-- Property Grid -->
+          <div class="lg:col-span-3">
+            <div class="flex items-center justify-between mb-8">
+              <p class="font-sans text-sm font-light text-gray-warm">
+                Showing {properties.length} properties
+              </p>
+              <select class="px-4 py-2 border border-gray-border font-sans text-sm font-light bg-white">
+                <option>Sort by: Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest First</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {properties.map((property) => (
+                <a href={`/property/${property.id}`} class="group block">
+                  <div class="border border-gray-border hover:shadow-card transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                      <img
+                        src={property.image}
+                        alt={property.title}
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        style="filter: saturate(0.9);"
+                      />
+                      {property.eligible && (
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-bronze text-white font-sans text-[10px] tracking-wide uppercase">
+                          Visa Eligible
+                        </span>
+                      )}
+                    </div>
+                    <div class="p-6">
+                      <p class="font-sans text-[10px] font-normal tracking-luxury uppercase text-gray-light mb-2">
+                        {property.location}
+                      </p>
+                      <h3 class="font-serif text-xl text-charcoal mb-3 group-hover:text-bronze transition-colors">
+                        {property.title}
+                      </h3>
+                      <p class="font-serif text-2xl text-charcoal mb-4">
+                        {formatPrice(property.price)}
+                      </p>
+                      <div class="flex items-center gap-6 pt-4 border-t border-gray-border">
+                        <span class="font-sans text-sm font-light text-gray-light">{property.beds} Beds</span>
+                        <span class="font-sans text-sm font-light text-gray-light">{property.baths} Baths</span>
+                        <span class="font-sans text-sm font-light text-gray-light">{property.sqm} m²</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-charcoal">
+      <div class="container-luxury text-center">
+        <h2 class="font-serif text-3xl md:text-4xl font-light text-white mb-6">
+          Can't Find What You're Looking For?
+        </h2>
+        <p class="font-sans text-base font-light text-white/70 max-w-xl mx-auto mb-10">
+          Our real estate partners have access to exclusive off-market properties. Contact us for personalized recommendations.
+        </p>
+        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 font-sans text-sm font-normal tracking-widest uppercase bg-white text-charcoal hover:bg-gray-100 transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

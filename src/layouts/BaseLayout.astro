@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Argentina's Golden Visa | Luxury Residency & Citizenship Services",
+  description = "Your gateway to Argentina. Expert guidance for investment residency, retirement visas, and citizenship in one of South America's most beautiful nations."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Argentina visa, Argentina residency, Argentina citizenship, golden visa Argentina, invest in Argentina, retire in Argentina" />
+    
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://argentinasgoldenvisa.com" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Google Fonts - Optimized Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+    
+    <title>{title}</title>
+  </head>
+  <body class="font-sans font-light antialiased">
+    <slot />
+    
+    <!-- Intersection Observer for Scroll Animations -->
+    <script>
+      // Reveal animations on scroll
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            // Optional: unobserve after animation
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with reveal classes
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-fade, .stagger-children');
+        revealElements.forEach(el => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
