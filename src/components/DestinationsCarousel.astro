@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-
 const destinations = [
   {
     id: 'buenos-aires',
     name: 'Buenos Aires',
     tagline: 'The Paris of the South',
     description: 'A cosmopolitan capital blending European elegance with Latin passion.',
-    image: '/images/destination-buenos-aires.jpg',
+    image: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800&q=80',
     alt: 'Buenos Aires skyline, expat real estate and residency destination',
     href: '/real-estate/buenos-aires',
   },
@@ -16,7 +14,7 @@ const destinations = [
     name: 'Mendoza',
     tagline: 'Wine Country',
     description: 'Gateway to world-renowned vineyards and the majestic Andes.',
-    image: '/images/destination-mendoza.jpg',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80',
     alt: 'Mendoza wine region and Andes mountains, Argentina expat location',
     href: '/real-estate/mendoza',
   },
@@ -25,7 +23,7 @@ const destinations = [
     name: 'Bariloche',
     tagline: 'Patagonian Alps',
     description: 'Stunning landscapes with pristine lakes and snow-capped peaks.',
-    image: '/images/destination-bariloche.jpg',
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80',
     alt: 'Bariloche Patagonian lakes and mountains, Argentina property investment',
     href: '/real-estate/bariloche',
   },
@@ -34,7 +32,7 @@ const destinations = [
     name: 'Córdoba',
     tagline: 'The Heartland',
     description: 'Colonial history meets modern innovation in Argentina\'s second city.',
-    image: '/images/destination-cordoba.jpg',
+    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80',
     alt: 'Córdoba city and heartland, Argentina second city expat living',
     href: '/real-estate/cordoba',
   },
@@ -43,7 +41,7 @@ const destinations = [
     name: 'Salta',
     tagline: 'The Beautiful',
     description: 'Colonial architecture meets dramatic Andean landscapes.',
-    image: '/images/destination-salta.jpg',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80',
     alt: 'Salta colonial architecture and Andean landscapes, Argentina north',
     href: '/real-estate/salta',
   },
@@ -90,11 +88,11 @@ const destinations = [
           <a href={destination.href} class="block">
             <div class="destination-card">
               <!-- Image - z-index: 0 (below-fold, lazy) -->
-              <Image
+              <img
                 src={destination.image}
                 alt={destination.alt}
-                width={800}
-                height={520}
+                width="800"
+                height="520"
                 loading="lazy"
                 class="destination-image"
               />

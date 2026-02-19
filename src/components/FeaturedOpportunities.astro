@@ -1,13 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-
 const properties = [
   {
     id: 1,
     title: 'Palermo Soho Penthouse',
     location: 'Buenos Aires',
     price: 485000,
-    image: '/images/property-palermo-penthouse.jpg',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
     alt: 'Palermo Soho penthouse Buenos Aires, investor visa eligible property',
     beds: 3,
     baths: 2,
@@ -18,7 +16,7 @@ const properties = [
     title: 'Vineyard Estate',
     location: 'Mendoza',
     price: 1250000,
-    image: '/images/property-vineyard-estate.jpg',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
     alt: 'Vineyard estate Mendoza Argentina, luxury property for residency investment',
     beds: 5,
     baths: 4,
@@ -29,7 +27,7 @@ const properties = [
     title: 'Lakefront Villa',
     location: 'Bariloche',
     price: 890000,
-    image: '/images/property-lakefront-villa.jpg',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
     alt: 'Lakefront villa Bariloche Patagonia, eligible investment property',
     beds: 4,
     baths: 3,
@@ -69,11 +67,11 @@ function formatPrice(price: number): string {
           <div class="card-luxury overflow-hidden">
             <!-- Image (below-fold, lazy) -->
             <div class="relative h-72 md:h-80 overflow-hidden">
-              <Image
+              <img
                 src={property.image}
                 alt={property.alt}
-                width={800}
-                height={600}
+                width="800"
+                height="600"
                 loading="lazy"
                 class="w-full h-full object-cover image-editorial image-zoom"
               />
